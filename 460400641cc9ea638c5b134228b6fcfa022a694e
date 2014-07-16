@@ -1,0 +1,11 @@
+Verified+2: Trafodion Jenkins
+Code-Review+1: Chris Sheedy <chris.sheedy@hp.com>
+Code-Review+1: Amanda Dierickx <amanda.kay.dierickx@hp.com>
+Code-Review+2: Joanie Cooper <joanie.cooper@hp.com>
+Code-Review+2: Dave Birdsall <dave.birdsall@hp.com>
+Workflow+1: Dave Birdsall <dave.birdsall@hp.com>
+Submitted-by: Trafodion Jenkins
+Submitted-at: Wed, 16 Jul 2014 18:43:41 +0000
+Reviewed-on: https://review.trafodion.org/90
+Project: trafodion/install
+Branch: refs/heads/master
