@@ -135,10 +135,10 @@ fi
 # if more than one node then copy to all nodes
 echo "***INFO: copying $hbase_trx_jar to all nodes"
 if [ $node_count -ne 1 ]; then
-    pdsh $MY_NODES mkdir -p $TRAF_WORKDIR 2>/dev/null
-    pdcp $MY_NODES export/lib/$hbase_trx_jar $TRAF_WORKDIR
-    pdsh $MY_NODES sudo cp $TRAF_WORKDIR/$hbase_trx_jar /usr/share/cmf/lib/plugins
-    pdsh $MY_NODES sudo chmod 644 /usr/share/cmf/lib/plugins/$hbase_trx_jar
+    pdsh $MY_NODES 'mkdir -p $TRAF_WORKDIR 2>/dev/null'
+    pdcp $MY_NODES 'export/lib/$hbase_trx_jar $TRAF_WORKDIR'
+    pdsh $MY_NODES 'sudo cp $TRAF_WORKDIR/$hbase_trx_jar /usr/share/cmf/lib/plugins'
+    pdsh $MY_NODES 'sudo chmod 644 /usr/share/cmf/lib/plugins/$hbase_trx_jar'
 else
     cp export/lib/$hbase_trx_jar $TRAF_WORKDIR
     chmod 755 $TRAF_WORKDIR/$hbase_trx_jar

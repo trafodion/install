@@ -180,14 +180,14 @@ if [ -z "$traf_gid" ]; then
             found=$($TRAF_PDSH "cat /etc/group | sed -e 's@^.*:x:\([0-9]*\):.*@\1@' | grep ^$traf_gid$ " 2>/dev/null | wc -l)
         fi
     done
-    $TRAF_PDSH sudo /usr/sbin/groupadd --gid $traf_gid $TRAF_GROUP
+    $TRAF_PDSH 'sudo /usr/sbin/groupadd --gid $traf_gid $TRAF_GROUP'
     if [ $? -ne 0 ]; then
         echo "***ERROR: unable to create Trafodion group: $TRAF_GROUP"
         exit -1
     fi
 else
     # Make sure Trafodion group exists on all nodes and create it if its not
-    $TRAF_PDSH sudo /usr/sbin/groupadd --gid $traf_gid $TRAF_GROUP
+    $TRAF_PDSH 'sudo /usr/sbin/groupadd --gid $traf_gid $TRAF_GROUP'
     return_code=$?
     if [ $return_code -ne 0 ]; then
         # if its not a duplicate group error then we have a problem
@@ -214,16 +214,16 @@ done
 
 # Make sure all prefix directories of TRAF_USER_DIR exist or
 # useradd command will fail
-$TRAF_PDSH sudo mkdir -p $default_home
+$TRAF_PDSH 'sudo mkdir -p $default_home'
 
 userid_already_exists="N"
-$TRAF_PDSH sudo /usr/sbin/useradd \
+$TRAF_PDSH 'sudo /usr/sbin/useradd \
     --shell /bin/bash \
     --home $TRAF_USER_DIR \
     --gid $traf_gid \
     --password "$(openssl passwd $TRAF_USER_PASSWORD)" \
     --uid $traf_uid \
-    $TRAF_USER
+    $TRAF_USER'
 return_code=$?
 if [ $return_code -ne 0 ]; then
     if [ $return_code -eq 9 ]; then
@@ -333,8 +333,8 @@ if [ "$node_count" -ne 1 ]; then
     sudo rm -rf $TRAF_WORKDIR/$TRAF_USER/.pulse 2>/dev/null
     sudo chown -R $USER.$(id -ng) $TRAF_WORKDIR/$TRAF_USER
     pdcp -r $MY_NODES -x $HOSTNAME $TRAF_WORKDIR/$TRAF_USER $TRAF_WORKDIR
-    pdsh $MY_NODES -x $HOSTNAME sudo cp -r $TRAF_WORKDIR/$TRAF_USER $default_home
-    pdsh $MY_NODES -x $HOSTNAME sudo chown -R $TRAF_USER.$TRAF_GROUP $TRAF_USER_DIR
+    pdsh $MY_NODES -x $HOSTNAME 'sudo cp -r $TRAF_WORKDIR/$TRAF_USER $default_home'
+    pdsh $MY_NODES -x $HOSTNAME 'sudo chown -R $TRAF_USER.$TRAF_GROUP $TRAF_USER_DIR'
 fi
 
 #=================================================

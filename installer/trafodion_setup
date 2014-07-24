@@ -288,7 +288,7 @@ echo "$NODE_LIST" > $TRAF_WORKDIR/node_list
 echo "$MY_NODES" > $TRAF_WORKDIR/my_nodes
 
 # create working directory on all nodes
-$TRAF_PDSH mkdir -p $TRAF_WORKDIR
+$TRAF_PDSH 'mkdir -p $TRAF_WORKDIR'
 
 #================================
 echo "***INFO: installing required packages"
@@ -318,7 +318,7 @@ package_list+=" libiodbc unixODBC tigervnc-server firefox "
 for package in $package_list
 do
     echo "***INFO: ... $package"
-    $TRAF_PDSH sudo yum --assumeyes install $package 2>> $YUM_LOG >> $YUM_LOG
+    $TRAF_PDSH 'sudo yum --assumeyes install $package 2>> $YUM_LOG >> $YUM_LOG'
     if [ $? != 0 ]; then
         echo "***ERROR: Can't install $package"
         exit -1
@@ -342,7 +342,7 @@ if [ $OPENSTACK_VM -ne 0 ]; then
     for package in $package_list
     do
         echo "***INFO: ... $package"
-        $TRAF_PDSH sudo yum --assumeyes install $package 2>> $YUM_LOG >> $YUM_LOG
+        $TRAF_PDSH 'sudo yum --assumeyes install $package 2>> $YUM_LOG >> $YUM_LOG'
         if [ $? != 0 ]; then
             echo "***WARNING: Can't install VM-only package $package"
         fi
@@ -378,7 +378,7 @@ if [ $node_count -eq 1 ]; then
 else
     pdcp $MY_NODES -x $HOSTNAME $traf_limits_conf $TRAF_WORKDIR
     pdcp $MY_NODES -x $HOSTNAME $TRAF_WORKDIR/etc_security_limits.conf_ORIGINAL $TRAF_WORKDIR
-    pdsh $MY_NODES sudo cp $traf_limits_conf /etc/security/limits.conf
+    pdsh $MY_NODES 'sudo cp $traf_limits_conf /etc/security/limits.conf'
 fi
 
 #=======================================
@@ -422,7 +422,7 @@ if [ $node_count -gt 1 ] ; then
 
     pdcp $MY_NODES -x $HOSTNAME $TRAF_WORKDIR/traf_selinux.conf $TRAF_WORKDIR
     pdcp $MY_NODES -x $HOSTNAME $TRAF_WORKDIR/etc_selinux_config_ORIGINAL $TRAF_WORKDIR/etc_selinux_config_ORIGINAL
-    pdsh $MY_NODES -x $HOSTNAME sudo cp $TRAF_WORKDIR/traf_selinux.conf /etc/selinux/config
+    pdsh $MY_NODES -x $HOSTNAME 'sudo cp $TRAF_WORKDIR/traf_selinux.conf /etc/selinux/config'
 
 fi
 

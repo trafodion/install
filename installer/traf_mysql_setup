@@ -121,7 +121,7 @@ sudo /sbin/chkconfig --list mysqld
 MYSQL_CONN_INSTALLED=$(rpm -qa | grep mysql-connector-java | wc -l)
 if [ "$MYSQL_CONN_INSTALLED" == "0" ]; then
     echo "***INFO: installing mysql-connector-java on all nodes in the cluster"
-    $TRAF_PDSH sudo yum --assumeyes install mysql-connector-java &>> $YUM_LOG
+    $TRAF_PDSH 'sudo yum --assumeyes install mysql-connector-java &>> $YUM_LOG'
 else
     echo "***INFO: mysql-connector-java already installed"
 fi
