@@ -137,7 +137,7 @@ else
         sudo cp $TRAF_WORKDIR/etc_security_limits.conf_ORIGINAL /etc/security/limits.conf
         sudo rm /usr/share/cmf/lib/plugins/$HBASE_TRX 2>/dev/null
     else
-        pdsh $MY_NODES  sudo cp $TRAF_WORKDIR/etc_selinux_config_ORIGINAL /etc/selinux/config
+        pdsh $MY_NODES sudo cp $TRAF_WORKDIR/etc_selinux_config_ORIGINAL /etc/selinux/config
         pdsh $MY_NODES sudo cp $TRAF_WORKDIR/etc_security_limits.conf_ORIGINAL /etc/security/limits.conf
         pdsh $MY_NODES sudo rm /usr/share/cmf/lib/plugins/$HBASE_TRX 2>/dev/null
     fi
