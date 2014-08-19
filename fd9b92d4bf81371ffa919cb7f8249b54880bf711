@@ -1,0 +1,10 @@
+Verified+2: Trafodion Jenkins
+Code-Review+1: Hans Zeller <hans.zeller@hp.com>
+Code-Review+2: Joanie Cooper <joanie.cooper@hp.com>
+Code-Review+2: Marvin Anderson <marvin.anderson@hp.com>
+Workflow+1: Marvin Anderson <marvin.anderson@hp.com>
+Submitted-by: Trafodion Jenkins
+Submitted-at: Tue, 19 Aug 2014 03:13:04 +0000
+Reviewed-on: https://review.trafodion.org/266
+Project: trafodion/install
+Branch: refs/heads/master
