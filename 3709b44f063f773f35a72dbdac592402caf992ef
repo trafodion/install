@@ -1,0 +1,9 @@
+Verified+2: Trafodion Jenkins
+Code-Review+1: Amanda Moran <amanda.kay.dierickx@hp.com>
+Code-Review+2: Joanie Cooper <joanie.cooper@hp.com>
+Workflow+1: Joanie Cooper <joanie.cooper@hp.com>
+Submitted-by: Trafodion Jenkins
+Submitted-at: Fri, 22 Aug 2014 19:28:27 +0000
+Reviewed-on: https://review.trafodion.org/259
+Project: trafodion/install
+Branch: refs/heads/master
