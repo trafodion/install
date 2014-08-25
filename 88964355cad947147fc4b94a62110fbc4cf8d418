@@ -1,0 +1,9 @@
+Verified+2: Trafodion Jenkins
+Code-Review+1: Chris Sheedy <chris.sheedy@hp.com>
+Code-Review+2: Joanie Cooper <joanie.cooper@hp.com>
+Workflow+1: Joanie Cooper <joanie.cooper@hp.com>
+Submitted-by: Trafodion Jenkins
+Submitted-at: Mon, 25 Aug 2014 19:54:16 +0000
+Reviewed-on: https://review.trafodion.org/313
+Project: trafodion/install
+Branch: refs/heads/master
