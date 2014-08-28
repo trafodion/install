@@ -1,0 +1,9 @@
+Code-Review+1: Steve Varnau <steve.varnau@hp.com>
+Verified+2: Trafodion Jenkins
+Code-Review+2: Joanie Cooper <joanie.cooper@hp.com>
+Workflow+1: Joanie Cooper <joanie.cooper@hp.com>
+Submitted-by: Trafodion Jenkins
+Submitted-at: Thu, 28 Aug 2014 22:40:21 +0000
+Reviewed-on: https://review.trafodion.org/339
+Project: trafodion/install
+Branch: refs/heads/master
