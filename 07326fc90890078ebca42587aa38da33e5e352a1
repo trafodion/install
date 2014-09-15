@@ -1,0 +1,9 @@
+Verified+2: Trafodion Jenkins
+Code-Review+2: Joanie Cooper <joanie.cooper@hp.com>
+Code-Review+2: Dave Birdsall <dave.birdsall@hp.com>
+Workflow+1: Dave Birdsall <dave.birdsall@hp.com>
+Submitted-by: Trafodion Jenkins
+Submitted-at: Mon, 15 Sep 2014 17:32:28 +0000
+Reviewed-on: https://review.trafodion.org/426
+Project: trafodion/install
+Branch: refs/heads/master
