@@ -66,11 +66,19 @@ fi
 # if more than one node then copy to all nodes
 echo "***INFO: copying $hbase_trx_jar to all nodes"
 if [ $node_count -ne 1 ]; then
+    pdsh $MY_NODES sudo rm -rf /usr/lib/hbase/lib/hbase-trx* 2>/dev/null
+    pdsh $MY_NODES sudo rm -rf /usr/share/cmf/lib/plugins/hbase-trx* 2>/dev/null
+    pdsh $MY_NODES sudo rm -rf /usr/lib/hbase/lib/trafodion* 2>/dev/null
+    pdsh $MY_NODES sudo rm -rf /usr/share/cmf/lib/plugins/trafodion* 2>/dev/null
     pdsh $MY_NODES mkdir -p $TRAF_WORKDIR 2>/dev/null
     pdcp $MY_NODES export/lib/$hbase_trx_jar $TRAF_WORKDIR
     pdsh $MY_NODES sudo cp $TRAF_WORKDIR/$hbase_trx_jar /usr/lib/hbase/lib
     pdsh $MY_NODES sudo chmod 644 /usr/lib/hbase/lib/$hbase_trx_jar
 else
+    sudo rm -rf /usr/lib/hbase/lib/hbase-trx* 2>/dev/null
+    sudo rm -rf /usr/share/cmf/lib/plugins/hbase-trx* 2>/dev/null
+    sudo rm -rf /usr/lib/hbase/lib/trafodion* 2>/dev/null
+    sudo rm -rf /usr/share/cmf/lib/plugins/trafodion* 2>/dev/null
     cp export/lib/$hbase_trx_jar $TRAF_WORKDIR
     chmod 755 $TRAF_WORKDIR/$hbase_trx_jar
     sudo cp $TRAF_WORKDIR/$hbase_trx_jar /usr/lib/hbase/lib
@@ -152,7 +160,7 @@ curl -X PUT -H 'Content-Type:application/json' -u $CLOUDERA_ADMIN:$CLOUDERA_PASS
 	"roleType" : "REGIONSERVER", 
 	"items" : [ { 
 		"name" : "hbase_coprocessor_region_classes", 
-                "value" : "org.apache.hadoop.hbase.coprocessor.transactional.TrxRegionObserver,org.apache.hadoop.hbase.coprocessor.transactional.TrxRegionEndpoint,org.apache.hadoop.hbase.coprocessor.AggregateImplementation"
+                "value" : "org.apache.hadoop.hbase.coprocessor.transactional.TrxRegionObserver,org.apache.hadoop.hbase.coprocessor.transactional.TrxRegionEndpoint,org.apache.hadoop.hbase.coprocessor.example.RowCountEndpoint,org.apache.hadoop.hbase.coprocessor.AggregateImplementation"
 		}, {
 		"name" : "hbase_regionserver_config_safety_valve", 
 		"value" : "<property>\r\n   <name>hbase.hregion.impl</name>\r\n   <value>org.apache.hadoop.hbase.regionserver.transactional.TransactionalRegion</value>\r\n</property>\r\n <property>\r\n   <name>hbase.regionserver.region.split.policy</name>\r\n   <value>org.apache.hadoop.hbase.regionserver.ConstantSizeRegionSplitPolicy</value>\r\n</property>\r\n  <property>\r\n   <name>hbase.snapshot.enabled</name>\r\n   <value>true</value>\r\n</property>\r\n <property>\r\n   <name>hbase.bulkload.staging.dir</name>\r\n   <value>/hbase-staging</value>\r\n</property>\r\n <property>\r\n   <name>hbase.regionserver.region.transactional.tlog</name>\r\n   <value>true</value>\r\n</property>\r\n"
