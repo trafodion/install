@@ -151,6 +151,7 @@ sudo rm -rf /var/lib/ganglia
 sudo rm -rf /var/lib/oozie
 sudo rm -rf /var/lib/zookeeper
 sudo rm -rf /var/lib/hadoop-hdfs
+sudo mysql -e "drop database if exists hive;"
 sudo rm -rf /var/lib/mysql/hive*
 
 sudo rm -rf /var/nagios
