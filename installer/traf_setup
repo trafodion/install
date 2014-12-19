@@ -77,7 +77,7 @@ fi
 
 for node in $NODE_LIST;
 do
-   ssh $node echo "exit" | hbase shell &> hbaseVersion.txt
+   ssh -n $node `echo "exit" | hbase shell &> hbaseVersion.txt`
    hbaseInstalled=`grep "Version" hbaseVersion.txt | wc -l`
 
    if [[ $hbaseInstalled -eq "0" ]]; then
@@ -97,6 +97,7 @@ if [[ $cloudera_installed -gt "0" ]]; then
    if [[ $versionInstalled -eq "1" ]]; then
       echo "***ERROR: Cloudera version 5.2 is not currently supported."
       echo "***ERROR: Exiting..."
+      rm hbaseVersion.txt
       exit -1
    fi
 fi
@@ -106,6 +107,7 @@ if [[ $ambari_installed -gt "0" ]]; then
    if [[ $versionInstalled -eq "1" ]]; then
       echo "***ERROR: Hortonworks version 2.2 is not currently supported."
       echo "***ERROR: Exiting..."
+      rm hbaseVersion.txt
       exit -1
    fi
 fi
