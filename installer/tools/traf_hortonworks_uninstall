@@ -90,6 +90,8 @@ sudo yum --assumeyes remove snappy\*
 sudo yum --assumeyes remove hadoop-lzo\*
 sudo yum --assumeyes remove hadoop\*
 sudo yum --assumeyes remove extjs-2.2-1 mysql-connector-java-5.0.8-1\*
+sudo rm -rf /var/cache/yum/x86_64/6/*ambari*
+sudo yum clean all 
 
 sudo rm -rf /usr/sbin/ambari*
 sudo rm -rf /usr/lib/hcatalog

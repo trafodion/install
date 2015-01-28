@@ -47,7 +47,7 @@ sudo rm -Rf /var/log/zookeeper* /var/log/hadoop* /var/log/hive* /var/log/sqoop* 
 
 sudo rm -Rf /etc/zookeeper* /etc/hadoop* /etc/hive* /etc/sqoop* /etc/flume* /etc/hbase* /etc/hcatalog* /etc/webhcat* /etc/pig* /etc/oozie*
   
-sudo rm -Rf /usr/lib/hadoop* /usr/lib/hive* /usr/lib/oozie* /usr/lib/hcatalog* /usr/lib/parquet* 
+sudo rm -Rf /usr/lib/hadoop* /usr/lib/hive* /usr/lib/oozie* /usr/lib/hcatalog* /usr/lib/parquet* /usr/lib/hbase* 
 
 sudo rm -Rf /usr/lib/alternatives/hadoop*
 

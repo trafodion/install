@@ -39,4 +39,8 @@ sudo rm -rf /opt/mapr
 sudo rm -rf /opt/storagefile
 sudo rm -rf /opt/mapr-setup
 
+#Delete any cached repos
+sudo rm -rf /var/cache/yum/x86_64/6/mapr*
+sudo yum clean all
+
 #==============================================
