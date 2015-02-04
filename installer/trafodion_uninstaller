@@ -1,7 +1,7 @@
 #!/bin/bash
 # @@@ START COPYRIGHT @@@
 #
-# (C) Copyright 2013-2014 Hewlett-Packard Development Company, L.P.
+# (C) Copyright 2013-2015 Hewlett-Packard Development Company, L.P.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ Options:
 
     --all                   This will remove Trafodion completely, including the
                             the Trafodion userid and its $HOME directory.
-                            This must be ran from a userid with sudo access.
+                            This must be run from a userid with sudo access.
 
 EOF
 }
@@ -42,8 +42,6 @@ echo $TRAF_WORKDIR
 # define defaults
 TRAF_USER=$(cat $TRAF_WORKDIR/trafodion_userid)
 echo $TRAF_USER
-NODE_LIST=$(cat $TRAF_WORKDIR/node_list)
-MY_NODES=$(cat $TRAF_WORKDIR/my_nodes)
 CLUSTERNAME="$HOSTNAME"
 TRAF_GROUP="trafodion"
 HBASE_TRX="hbase_jdk1_6-trx-0.94.6.jar"
@@ -118,7 +116,7 @@ else
     # check sudo access which is required for "--all" option
     sudo echo "***INFO: testing sudo access"
     if [ $? -ne 0 ]; then
-        echo "***ERROR: The '--all' option requires this script be ran from a userid with sudo access."
+        echo "***ERROR: The '--all' option requires this script be run from a userid with sudo access."
         exit -1
     fi
 
