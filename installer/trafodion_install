@@ -403,7 +403,7 @@ fi
 
 for node in $NODE_LIST;
 do
-   ssh $node -n 'echo "exit" | hbase shell &> hbaseVersion.txt'
+   ssh $node -n 'echo "exit" | hbase shell &> $HOME/hbaseVersion.txt'
    hbaseInstalled=$(ssh -n $node grep "Version" $HOME/hbaseVersion.txt | wc -l)
    if [[ $hbaseInstalled -eq "0" ]]; then
       echo "***ERROR: Hbase version could not be determined on $node"
@@ -586,6 +586,7 @@ fi
 $TRAF_PDSH sudo mkdir -p $TRAF_WORKDIR
 $TRAF_PDSH sudo chmod 777 $TRAF_WORKDIR
 $TRAF_PDSH sudo mkdir -p $LOCAL_WORKDIR
+$TRAF_PDSH sudo chmod 777 $LCAL_WORKDIR
 
 # copy config file to all nodes
 if [ $node_count -ne 1 ]; then
