@@ -295,12 +295,12 @@ fi
 #==============================================
 #Check location given for Java 65 or greater
 
-echo -n "Specify location of Java 1.7.0_65 or higher, default is $JAVA_HOME: "
+echo -n "Specify location of Java 1.7.0_65 or higher (JDK), default is $JAVA_HOME: "
 read answer
 
 if [ -z $answer ]; then
       if [ -z $JAVA_HOME ]; then
-         echo "***ERROR: Must specify location of Java 1.7.0_65 or higher."
+         echo "***ERROR: Must specify location of Java 1.7.0_65 or higher (JDK)."
          exit -1
       fi
 else
@@ -313,6 +313,13 @@ JAVA65="65"
 
 for node in $NODE_LIST
 do
+   javaType="$(ssh -n $node $JAVA_HOME/bin/javac -version 2>&1 > /dev/null | grep "No such file" | wc -l)"
+   if [[ $javaType -eq "1" ]]; then
+      echo "***ERROR: Java version on node $node is of type JRE"
+      echo "***ERROR: Java version needed on all nodes must be a JDK"
+      exit -1 
+   fi
+
    THIS_JVM_VER="$(ssh -n $node $JAVA_HOME/bin/java -version 2>&1 > /dev/null)"
    if [[ "$THIS_JVM_VER" == *"No such file"* ]]; then
       echo "***ERROR: Unable to find Java version on node $node"
