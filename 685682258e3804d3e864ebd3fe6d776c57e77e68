@@ -1,0 +1,9 @@
+Verified+2: Trafodion Jenkins
+Code-Review+1: Chris Sheedy <chris.sheedy@hp.com>
+Code-Review+2: Amanda Moran <amanda.kay.dierickx@hp.com>
+Workflow+1: Amanda Moran <amanda.kay.dierickx@hp.com>
+Submitted-by: Trafodion Jenkins
+Submitted-at: Sat, 18 Apr 2015 00:00:15 +0000
+Reviewed-on: https://review.trafodion.org/1532
+Project: trafodion/install
+Branch: refs/heads/master
