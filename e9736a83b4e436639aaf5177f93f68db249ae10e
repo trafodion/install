@@ -1,0 +1,10 @@
+Code-Review+1: Steve Varnau <steve.varnau@hp.com>
+Verified+2: Trafodion Jenkins
+Code-Review+1: Dave Birdsall <dave.birdsall@hp.com>
+Code-Review+2: Marvin Anderson <marvin.anderson@hp.com>
+Workflow+1: Marvin Anderson <marvin.anderson@hp.com>
+Submitted-by: Trafodion Jenkins
+Submitted-at: Mon, 04 May 2015 21:34:03 +0000
+Reviewed-on: https://review.trafodion.org/1614
+Project: trafodion/install
+Branch: refs/heads/master
