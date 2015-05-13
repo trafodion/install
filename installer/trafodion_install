@@ -678,6 +678,10 @@ if [[ ! -f $HOME_DIR/$TRAF_USER/sqconfig ]]; then
    fi
 fi
 
+#Reserve DCS Ports
+sudo sysctl -w net.ipv4.ip_local_reserved_ports=37800
+sudo sysctl -w net.ipv4.ip_local_reserved_ports=40010
+
 #>>> we don't really need to copy all this to the trafodion userid's home dir
 #Create install directory
 pdsh -S $MY_NODES sudo mkdir -p /$HOME_DIR/$TRAF_USER/installer &> /dev/null
