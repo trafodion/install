@@ -678,6 +678,25 @@ if [[ ! -f $HOME_DIR/$TRAF_USER/sqconfig ]]; then
    fi
 fi
 
+#Reserve DCS Ports
+
+trafodion_ports=${DCS_MASTER_PORT:-37800},${DCS_MASTER_INFO_PORT:-40010}
+
+if sysctl net.ipv4.ip_local_reserved_ports >/dev/null 2>&1; then
+
+    reserved_ports=$(sysctl net.ipv4.ip_local_reserved_ports | awk -F'=' '{print $2;}' | sed 's/^ //')
+
+    if [[ -z "${reserved_ports}" ]]; then
+       sudo sysctl -w net.ipv4.ip_local_reserved_ports=${trafodion_ports}
+    else
+       sudo sysctl -w net.ipv4.ip_local_reserved_ports=${trafodion_ports},${reserved_ports}
+    fi
+else
+    echo "***ERROR: Unable to reserve DCS ports (37800 and 40010)."
+    exit -1
+fi
+
+
 #>>> we don't really need to copy all this to the trafodion userid's home dir
 #Create install directory
 pdsh -S $MY_NODES sudo mkdir -p /$HOME_DIR/$TRAF_USER/installer &> /dev/null
