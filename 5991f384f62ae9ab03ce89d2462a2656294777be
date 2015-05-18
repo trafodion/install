@@ -1,0 +1,10 @@
+Verified+2: Trafodion Jenkins
+Code-Review+2: Anuradha <anuradha.hegde@hp.com>
+Code-Review+2: Marvin Anderson <marvin.anderson@hp.com>
+Workflow+1: Marvin Anderson <marvin.anderson@hp.com>
+Code-Review+2: Arvind Narain <arvind.narain@hp.com>
+Submitted-by: Trafodion Jenkins
+Submitted-at: Mon, 18 May 2015 21:10:27 +0000
+Reviewed-on: https://review.trafodion.org/1660
+Project: trafodion/install
+Branch: refs/heads/master
