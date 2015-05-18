@@ -51,6 +51,10 @@ EOF
 }
 
 #==============================================
+#Global variables
+TRAF_USER="trafodion"
+
+#==============================================
 #Parse input
 USER_CONFIG=""
 ACCEPT_LICENSE="N"
@@ -113,6 +117,13 @@ echo "******************************"
 echo
 
 #==============================================
+
+# check not installing as Trafodion userid
+if [[ "$(whoami)" == "$TRAF_USER" ]]; then
+   echo "***ERROR: The Trafodion username cannot be the same as the install username"
+   exit -1
+fi
+
 # check that we are running from a userid with sudo access
 sudo echo "***INFO: testing sudo access"
 if [ $? -ne 0 ]; then
